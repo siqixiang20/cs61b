@@ -59,7 +59,7 @@ public class Planet{
 	}
 	
 	/** Check if two planets are equal. */
-	public Boolean equals(Planet p) {
+	private Boolean equals(Planet p) {
 		if (this.xxPos == p.xxPos && this.yyPos == p.yyPos && 
 		    this.xxVel == p.xxVel && this.yyVel == p.yyVel &&
 			this.mass == p.mass && this.imgFileName == p.imgFileName) {
