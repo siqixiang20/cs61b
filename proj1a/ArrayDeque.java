@@ -86,12 +86,10 @@ public class ArrayDeque<T> {
         }
         if (nextFirst == items.length - 1) {
             removeItem = items[0];
-            items[0] = null;
             nextFirst = 0;
         } else {
             nextFirst += 1;
             removeItem = items[nextFirst];
-            items[nextFirst] = null;
         }
         size -= 1;
         if (size < items.length / 4 && items.length > 16) {
@@ -108,10 +106,8 @@ public class ArrayDeque<T> {
         if (nextLast == 0) {
             nextLast = size - 1;
             removeItem = items[nextLast];
-            items[nextLast] = null;
         } else {
             removeItem = items[nextLast];
-            items[nextLast] = null;
             nextLast -= 1;
         }
         size -= 1;
