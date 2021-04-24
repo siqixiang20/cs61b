@@ -3,44 +3,44 @@ public class ArrayDeque<T> {
     private int size;
     private int nextFirst;
     private int nextLast;
-    private final int starting_size = 8;
+    private final int startingSize = 8;
 
     public ArrayDeque() {
-        items = (T[]) new Object[starting_size];
+        items = (T[]) new Object[startingSize];
         size = 0;
         nextFirst = 3;
         nextLast = 4;
     }
 
-    public void resizeExpand(int capacity) {
+    private void resizeExpand(int capacity) {
         T[] a = (T[]) new Object[capacity];
 
-        int FirstIndex;
+        int firstIndex;
         if (nextFirst == items.length - 1) {
-            FirstIndex = 0;
+            firstIndex = 0;
         } else {
-            FirstIndex = nextFirst + 1;
+            firstIndex = nextFirst + 1;
         }
-        int firstArrayLength = items.length - FirstIndex; /* 5 */
-        System.arraycopy(items, FirstIndex, a, 1, firstArrayLength);
+        int firstArrayLength = items.length - firstIndex; /* 5 */
+        System.arraycopy(items, firstIndex, a, 1, firstArrayLength);
         System.arraycopy(items, 0, a, 1 + firstArrayLength, items.length - firstArrayLength);
         nextFirst = 0;
         nextLast = size + 1;
         items = a;
     }
-    public void resizeReduce(int capacity) {
+    private void resizeReduce(int capacity) {
         T[] a = (T[]) new Object[capacity];
-        int FirstIndex;
+        int firstIndex;
         if (nextLast > nextFirst) {
             System.arraycopy(items, nextFirst + 1, a, 1, size);
         } else {
             if (nextFirst == items.length - 1) {
-                FirstIndex = 0;
+                firstIndex = 0;
             } else {
-                FirstIndex = nextFirst + 1;
+                firstIndex = nextFirst + 1;
             }
-            int firstArrayLength = items.length - FirstIndex;
-            System.arraycopy(items, FirstIndex, a, 1, firstArrayLength);
+            int firstArrayLength = items.length - firstIndex;
+            System.arraycopy(items, firstIndex, a, 1, firstArrayLength);
             System.arraycopy(items, 0, a, 1 + firstArrayLength, items.length - firstArrayLength);
         }
         nextFirst = 0;
@@ -84,7 +84,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (nextFirst == items.length - 1){
+        if (nextFirst == items.length - 1) {
             removeItem = items[0];
             items[0] = null;
             nextFirst = 0;
@@ -94,7 +94,7 @@ public class ArrayDeque<T> {
             items[nextFirst] = null;
         }
         size -= 1;
-        if (size < items.length/4){
+        if (size < items.length / 4) {
             resizeReduce(size / 2);
         }
         return removeItem;
@@ -105,7 +105,7 @@ public class ArrayDeque<T> {
         if (size == 0) {
             return null;
         }
-        if (nextLast == 0){
+        if (nextLast == 0) {
             nextLast = size - 1;
             removeItem = items[nextLast];
             items[nextLast] = null;
@@ -115,17 +115,21 @@ public class ArrayDeque<T> {
             nextLast -= 1;
         }
         size -= 1;
-        if (size < items.length/4){
+        if (size < items.length / 4) {
             resizeReduce(size / 2);
         }
         return removeItem;
     }
 
-    public boolean isEmpty() { return size == 0; }
+    public boolean isEmpty() {
+        return size == 0;
+    }
 
-    public int size() { return size; }
+    public int size() {
+        return size;
+    }
 
-    public int NextIndex(int x) {
+    private int nextIndex(int x) {
         if (x == items.length - 1) {
             return 0;
         } else {
@@ -134,13 +138,13 @@ public class ArrayDeque<T> {
         }
     }
     public void printDeque() {
-        for (int index = NextIndex(nextFirst); index < nextLast; index = NextIndex(index)) {
+        for (int index = nextIndex(nextFirst); index < nextLast; index = nextIndex(index)) {
             System.out.print(items[index]);
             System.out.print(" ");
         }
         System.out.println();
     }
-    public T get(int index){
+    public T get(int index) {
         if (index < 0 | index >= size) {
             return null;
         }
