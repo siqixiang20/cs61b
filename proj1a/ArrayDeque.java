@@ -93,7 +93,7 @@ public class ArrayDeque<T> {
         }
         size -= 1;
         if (size < items.length / 4 && items.length > 16) {
-            resizeReduce(size / 2);
+            resizeReduce(items.length / 2);
         }
         return removeItem;
     }
@@ -111,7 +111,7 @@ public class ArrayDeque<T> {
         removeItem = items[nextLast];
         size -= 1;
         if (size < items.length / 4 && items.length > 16) {
-            resizeReduce(size / 2);
+            resizeReduce(items.length / 2);
         }
         return removeItem;
     }
