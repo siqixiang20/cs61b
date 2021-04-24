@@ -107,8 +107,8 @@ public class ArrayDeque<T> {
             nextLast = size - 1;
             removeItem = items[nextLast];
         } else {
-            removeItem = items[nextLast];
             nextLast -= 1;
+            removeItem = items[nextLast];
         }
         size -= 1;
         if (size < items.length / 4 && items.length > 16) {
@@ -145,6 +145,18 @@ public class ArrayDeque<T> {
             return null;
         }
         return items[(nextFirst + 1 + index) % items.length];
+    }
+
+    public static void main(String[] args) {
+        ArrayDeque<Integer> a = new ArrayDeque<>();
+        a.addFirst(0);
+        a.addFirst(1);
+        a.addFirst(2);
+        a.addFirst(3);
+        a.addFirst(4);
+        a.addFirst(5);
+        a.addFirst(6);
+        System.out.println(a.nextLast);
     }
 
 }
