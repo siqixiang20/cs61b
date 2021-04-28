@@ -8,7 +8,7 @@ public class Palindrome {
         return wordDeque;
     }
 
-    public boolean isPalindromeHelper(Deque<Character> wordDeque) {
+    private boolean isPalindromeHelper(Deque<Character> wordDeque) {
         if (wordDeque.size() <= 1) {
             return true;
         }
@@ -25,7 +25,7 @@ public class Palindrome {
         return isPalindromeHelper(testDeque);
     }
 
-    public boolean isPalindromeHelper(Deque<Character> wordDeque, CharacterComparator cc) {
+    private boolean isPalindromeHelper(Deque<Character> wordDeque, CharacterComparator cc) {
         if (wordDeque.size() <= 1) {
             return true;
         }
