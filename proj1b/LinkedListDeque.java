@@ -1,10 +1,10 @@
-public class LinkedListDeque<T> implements Deque<T>{
+public class LinkedListDeque<T> implements Deque<T> {
     private class LinkNode {
         private T item;
         private LinkNode prev;
         private LinkNode next;
 
-        public LinkNode(T i, LinkNode p, LinkNode n) {
+        LinkNode(T i, LinkNode p, LinkNode n) {
             item = i;
             prev = p;
             next = n;
