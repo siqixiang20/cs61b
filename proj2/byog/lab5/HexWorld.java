@@ -16,7 +16,7 @@ public class HexWorld {
     private static final long SEED = 999;
     private static final Random RANDOM = new Random(SEED);
 
-    private static final int side = 3;
+    private static final int side = 2;
     // Random Tiles
     private static TETile randomTile() {
         int tileNum = RANDOM.nextInt(7);
@@ -90,7 +90,7 @@ public class HexWorld {
                 world[x][y] = Tileset.NOTHING;
             }
         }
-        HexTesselation(world, 5, 35,3);
+        HexTesselation(world, 5, 35,side);
         ter.renderFrame(world);
     }
 }
