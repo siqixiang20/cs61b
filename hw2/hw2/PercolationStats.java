@@ -29,22 +29,22 @@ public class PercolationStats {
         for (double x: threshold) {
             sum += x;
         }
-        return sum/threshold.length;
+        return sum / threshold.length;
     }
     // sample standard deviation of percolation threshold
     public double stddev() {
         double partialSum = 0;
         for (double x: threshold) {
-            partialSum += (x - mean())*(x - mean());
+            partialSum += (x - mean()) * (x - mean());
         }
-        return Math.sqrt(partialSum/(threshold.length - 1));
+        return Math.sqrt(partialSum / (threshold.length - 1));
     }
     // low endpoint of 95% confidence interval
     public double confidenceLow() {
-        return mean() - (1.96 * stddev())/Math.sqrt(threshold.length);
+        return mean() - (1.96 * stddev()) / Math.sqrt(threshold.length);
     }
     // high endpoint of 95% confidence interval
     public double confidenceHigh() {
-        return mean() + (1.96 * stddev())/Math.sqrt(threshold.length);
+        return mean() + (1.96 * stddev()) / Math.sqrt(threshold.length);
     }
 }
