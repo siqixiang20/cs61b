@@ -30,7 +30,8 @@ public class AlphabetEasyPuzzle implements WorldState {
         return neighbs;
     }
 
-    /** The goal is 'z', so distance will just be 'z' - character. */
+    /** The goal is 'z', so distance will just be 'z' - character.
+     * @return*/
     @Override
     public int estimatedDistanceToGoal() {
         return 'z' - character;
